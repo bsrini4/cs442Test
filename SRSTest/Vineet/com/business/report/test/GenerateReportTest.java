@@ -25,7 +25,7 @@ public class GenerateReportTest {
 		try{
 		GenerateReport.setReportServerVariables();
 		} catch(Exception e) {
-			
+			fail("properties file failed");
 		}finally {
 			oldfile =new File("./SchoolRankingSystem1.properties");
 			newfile =new File("./SchoolRankingSystem.properties");
@@ -37,23 +37,10 @@ public class GenerateReportTest {
 	}
 
 	@Test
-	public void testGenerate() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testSetExecutionId() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testGetEngineConfiguration() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testGetService() {
-		fail("Not yet implemented"); // TODO
+	public void testGenerateReportType() {
+		boolean check = GenerateReport.generate("test", "1, 2,3","percentPassingOverall,totalEnrollment");
+		
+		assertFalse("generate report returns false",check);
 	}
 
 }

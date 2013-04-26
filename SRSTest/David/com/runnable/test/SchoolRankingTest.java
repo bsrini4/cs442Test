@@ -11,6 +11,7 @@ import java.util.Locale;
 import org.junit.Test;
 
 public class SchoolRankingTest {
+	
 	// no visible side effects and never returns normally, so nothing to do but
 	// let it run for a while and make sure there are no exceptions
 	@Test

@@ -1,0 +1,21 @@
+tutorial
+
+run the jar file.
+
+run update data to refresh data.
+
+try running generate report without selecting any data - get validation error
+
+Bar Graph can be run by selecting multiple schools and multiple parameters
+
+the report is generated in a time stamp named pdf in c:\temp folder
+
+
+Pie Chart , multiple schools against one parameter
+
+
+Scatter Plot - multiple schools against two parameters
+
+
+Parameters passed to the application
+
