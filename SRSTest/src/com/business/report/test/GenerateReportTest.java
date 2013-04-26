@@ -119,6 +119,7 @@ public class GenerateReportTest {
 	
 	@Test
 	public void testValidBrGraph() {
+		GenerateReport.setReportServerVariables();
 		boolean check = GenerateReport.generate("Bar Graph", "22,2,3","percentPassingOverall,graduationRateLowIncome,graduationRateDisabled");
 		assertTrue(" error in rep generation",check);
 	
@@ -126,12 +127,14 @@ public class GenerateReportTest {
 	
 	@Test
 	public void testValidPieChart() {
+		GenerateReport.setReportServerVariables();
 		boolean check = GenerateReport.generate("Pie Chart", "22,2,3","percentPassingOverall");
 		assertTrue(" error in rep generation",check);
 	}
 	
 	@Test 
 	public void testValidScatterPlot() {
+		GenerateReport.setReportServerVariables();
 		boolean check = GenerateReport.generate("Scatter Plot", "22,2,3","percentPassingOverall,graduationRateDisabled");
 		assertTrue(" error in rep generation",check);
 	}
