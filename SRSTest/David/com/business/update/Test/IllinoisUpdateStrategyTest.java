@@ -16,20 +16,15 @@ public class IllinoisUpdateStrategyTest {
 	public void testGetData() throws IOException {
 		Iterator<School> iter = new IllinoisUpdateStrategy().getData();
 		assertNotNull("Should have returned an iterator", iter);
-	}
-	
-	@Test
-	public void testIterator() throws IOException {
-		Iterator<School> iter = new IllinoisUpdateStrategy().getData();
-		assertNotNull("Should have returned an iterator", iter);
 		
 		int count = 0;
-		while (iter.hasNext()) {
+		while (iter.hasNext() && count < 100000) {
 			School s = iter.next();
 			assertNotNull("Should never return null", s);
 			count++;
 		}
 		assertTrue("Too few schools returned", count > 100);
+		assertTrue("Too many schools returned", count < 100000);
 	}
 	
 	@Test
