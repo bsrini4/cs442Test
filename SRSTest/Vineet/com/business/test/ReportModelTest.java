@@ -22,9 +22,9 @@ import com.database.DatabaseConnection;
 
 public class ReportModelTest {
 	
-	ReportModel testModel;
+	static ReportModel testModel;
 	@BeforeClass
-	public void setup() {
+	public static void setup() {
 		testModel = new ReportModel();
 	}
 	
@@ -86,7 +86,7 @@ public class ReportModelTest {
 	}
 	
 	@AfterClass
-	public void tearDown() {
+	public static void tearDown() {
 		testModel.clearExistingData();
 		testModel.getNewData();
 	}
