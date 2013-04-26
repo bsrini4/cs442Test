@@ -10,7 +10,7 @@ public class Runner {
 	
 		public static void main(String[] args) throws Exception {                    
 		       JUnitCore.main(
-		         "com.runnable.test.SRSTestSuite");            
+		         "com.runnable.SRSTestSuite");            
 		}
 
 	
