@@ -27,10 +27,7 @@ public class GenerateReportTest {
 		//test
 		try{
 			GenerateReport.setReportServerVariables();
-		} catch( Exception e) {
-			e.printStackTrace();
-			fail("error setting report server variable");
-		}
+		} 
 		finally {
 			//teardown
 			oldfile =new File("./SchoolRankingSystem1.properties");
@@ -43,44 +40,99 @@ public class GenerateReportTest {
 	}
 
 	@Test
-	public void testGenerateInvalidReportType() {
+	public void testGenerateReportWithInvalidReportType() {
 		boolean check = GenerateReport.generate("test", "1, 2,3","percentPassingOverall,totalEnrollment");
+
+		assertFalse("generate report returns false",check);
+	}
+	
+	@Test
+	public void testGenerateReportWithInvalidReportType2() {
+		boolean check = GenerateReport.generate("", "1, 2,3","percentPassingOverall,totalEnrollment");
 
 		assertFalse("generate report returns false",check);
 	}
 
 	@Test
-	public void testGenerateInvalidIdAsCharacter() {
+	public void testGenerateReportWithInvalidIdAsCharacter() {
 
 		boolean check =GenerateReport.generate("Pie Chart", "A,2,3","percentPassingOverall");
 		assertFalse("error in rep generation",check);
 	}
 
 	@Test
-	public void testGenerateInvalidIdAsInt() {
+	public void testGenerateReportWithInvalidIdAsNegative() {
 
-		boolean check =GenerateReport.generate("Pie Chart", "-2,2,3","percentPassingOverall");
+		boolean check = GenerateReport.generate("Pie Chart", "-2,2,3","percentPassingOverall");
 		assertTrue("no error in rep generation",check);
+	}
+	@Test
+	public void testGenerateReportWithInvalidIdAsBlank() {
+
+		boolean check = GenerateReport.generate("Pie Chart", "","percentPassingOverall");
+		assertFalse("no error in rep generation",check);
 	}
 
 	@Test
-	public void testGenerateInvalidParameter() {
+	public void testGenerateReportWithInvalidParameter() {
 
-		boolean check =GenerateReport.generate("Pie Chart", "22,2,3","percentPassingOverall2");
+		boolean check = GenerateReport.generate("Bar Graph", "22,2,3","percentPassingOverall2");
+		assertFalse("error in rep generation",check);
+	}
+	
+	@Test
+	public void testGenerateReportWithInvalidParameterAsBlank() {
+
+		boolean check = GenerateReport.generate("Pie Chart", "22,2,3","");
 		assertFalse("error in rep generation",check);
 	}
 
 	@Test
-	public void testGenerateInvalidNoofParameterForPieChart() {
+	public void testGenerateReportWithInvalidMoreNoofParameterForPieChart() {
 
-		boolean check =GenerateReport.generate("Pie Chart", "22,2,3","percentPassingOverall,graduationRateLowIncome");
+		boolean check = GenerateReport.generate("Pie Chart", "22,2,3","percentPassingOverall,graduationRateLowIncome");
+		assertFalse(" error in rep generation",check);
+	}
+	@Test
+	public void testGenerateReportWithInvalidLessNoofParameterForPieChart() {
+
+		boolean check = GenerateReport.generate("Pie Chart", "22,2,3","");
 		assertFalse(" error in rep generation",check);
 	}
 
 	@Test
-	public void testGenerateInvalidNoofParameterForScatterPlot() {
+	public void testGenerateReportWithInvalidMoreNoofParameterForScatterPlot() {
 
-		boolean check =GenerateReport.generate("Scatter Plot", "22,2,3","percentPassingOverall,graduationRateLowIncome,graduationRateDisabled");
+		boolean check = GenerateReport.generate("Scatter Plot", "22,2,3","percentPassingOverall,graduationRateLowIncome,graduationRateDisabled");
 		assertFalse(" error in rep generation",check);
+	}
+	
+	@Test
+	public void testGenerateReportWithInvalidLessNoOfParameterForScatterPlot() {
+
+		try {
+		 GenerateReport.generate("Scatter Plot", "22,2,3","percentPassingOverall");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testValidBrGraph() {
+		boolean check = GenerateReport.generate("Bar Graph", "22,2,3","percentPassingOverall,graduationRateLowIncome,graduationRateDisabled");
+		assertTrue(" error in rep generation",check);
+	
+	}
+	
+	@Test
+	public void testValidPieChart() {
+		boolean check = GenerateReport.generate("Pie Chart", "22,2,3","percentPassingOverall");
+		assertTrue(" error in rep generation",check);
+	}
+	
+	@Test 
+	public void testValidScatterPlot() {
+		boolean check = GenerateReport.generate("Scatter Plot", "22,2,3","percentPassingOverall,graduationRateDisabled");
+		assertTrue(" error in rep generation",check);
 	}
 }
