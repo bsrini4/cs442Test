@@ -1,5 +1,4 @@
-package com.runnable.test;
-import org.junit.runner.JUnitCore;
+package com.runnable;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;

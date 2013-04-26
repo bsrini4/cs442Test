@@ -3,10 +3,7 @@ package com.bean.test;
 import static org.junit.Assert.*;
 
 import com.bean.School;
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 import org.junit.Test;
 
 public class SchoolTest {

@@ -2,22 +2,15 @@ package com.business.test;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Iterator;
 import java.util.Map;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.bean.School;
 import com.business.ReportModel;
-import com.business.update.IllinoisUpdateStrategy;
 import com.database.DatabaseConnection;
 
 public class ReportModelTest {
